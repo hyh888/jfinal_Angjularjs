@@ -1,0 +1,35 @@
+@charset utf-8;
+body,h1,h2,h3,h4,h5,h6,hr,p,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,button,input,textarea,blockquote,th,td{color:#424041;cursor:default;font-family:Tahoma,Helvetica,Arial,sans-serif;font-size:13px;margin:0;padding:0}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:700}
+img,fieldset,abbr,acronym{border:0}
+ol,ul{list-style:none}
+table{border-collapse:collapse;border-spacing:0}
+caption,th,td{text-align:left;vertical-align:top}
+body{background:#FFF url(../images/bg.gif) repeat-x scroll 0 0;color:#333;font-family:Arial,Helvetica,sans-serif;font-size:11px;width:1000px;margin:0 auto !important}
+.clear{clear:both}
+.red{color:#f00}
+a{color:#047DB6;text-decoration:underline}
+a:hover{color:#f60}
+table.list{border:1px solid #e4e4e4;width:100%;margin-bottom:4px;background:#fff}
+table.list th{background-color:#EEE;white-space:nowrap;text-align:left;padding:4px 4px 4px 14px}
+table td{border:0;background:#afff}
+table td input {border:0;background:#afff}
+table tbody tr:hover{background-color:#FFD}
+table tr.highlight{background-color:#c90}
+.form_box .site_monthly_reports_div input{width:expression(this.type=="text"?"100px":"style")}
+.form_box .site_monthly_reports_div input[type=text]{width:100px}
+.form_box .site_monthly_reports_div select{float:left;width:100px}
+.form_box .warning{display:inline;color:red}
+.filter_box{overflow:hidden;_zoom:1}
+.filter_box span{float:left;line-height:30px;padding-right:10px}
+
+#forum_page .table_box table td{padding-top:3px;padding-bottom:3px;}
+.light_link{color:#0099CC;padding:5px 0;display:block;}
+.light_link a{color:#0099CC;}
+.unimportant{color:#888;font-size:80%}
+
+.fieldWithErrors{background:#f99;clear:none;float:left;}
+#errorExplanation{width:400px;border:2px solid red;background-color:#f0f0f0;margin:10px;padding:7px 7px 12px;}
+#errorExplanation h2{text-align:left;font-weight:700;font-size:12px;background-color:#c00;color:#fff;margin:-7px;padding:5px 5px 5px 15px;}
+#errorExplanation p{color:#333;margin-bottom:0;padding:5px;}
+#errorExplanation ul li{font-size:12px;list-style:square;margin:0 0 0 10px;}
