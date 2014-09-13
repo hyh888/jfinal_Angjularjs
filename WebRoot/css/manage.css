@@ -121,3 +121,16 @@ table tr.highlight {
 	list-style: square;
 	margin: 0 0 0 10px;
 }
+
+.ng-cloak {
+	display: none;
+}
+
+input.ng-invalid.ng-dirty {
+	border-color: #fa787e;
+	background-color: #78fa89;
+}
+
+input.ng-valid.ng-dirty {
+	color: Blue;
+}

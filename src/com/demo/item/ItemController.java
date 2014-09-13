@@ -35,6 +35,10 @@ public class ItemController extends Controller {
 		redirect("/");
 	}
 	
+	//public void batchCrud() {
+		//Item.dao.deleteById(getParaToJson());
+		//redirect("/");
+	//}
 	public void delete() {
 		Item.dao.deleteById(getParaToInt());
 		redirect("/");
