@@ -1,5 +1,7 @@
 package com.demo.item;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 
@@ -34,11 +36,22 @@ public class ItemController extends Controller {
 		getModel(Item.class).update();
 		redirect("/");
 	}
-	
-	//public void batchCrud() {
-		//Item.dao.deleteById(getParaToJson());
-		//redirect("/");
-	//}
+
+	public void batchCrud() {
+		String myRs= "{'params':" + getPara("params") + "}";
+	      // 将字符串转为json对象，使用fastjson
+      JSONObject obj = JSON.parseObject(myRs);
+      Object[] params=null;
+      try{
+      	params = obj.getJSONArray("params").toArray();
+      }catch(NullPointerException ne){
+      	params=new Object[]{};
+      }
+      String myQ=(String) params[0];
+		redirect("/");
+	}
+
+
 	public void delete() {
 		Item.dao.deleteById(getParaToInt());
 		redirect("/");
