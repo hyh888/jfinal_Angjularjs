@@ -1,6 +1,7 @@
 package com.demo.item;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
@@ -41,13 +42,22 @@ public class ItemController extends Controller {
 		String myRs= "{'params':" + getPara("params") + "}";
 	      // 将字符串转为json对象，使用fastjson
       JSONObject obj = JSON.parseObject(myRs);
-      Object[] params=null;
+     // Object[] items=null;
+      JSONArray items;
       try{
-      	params = obj.getJSONArray("params").toArray();
+    	   items = obj.getJSONArray("params");
+          for (int idx= 0; idx < items.size(); idx++) {
+        	  Integer myId = items.getJSONObject(idx).getInteger("id");
+        	  String myTitle = items.getJSONObject(idx).getString("title");
+        	  String myDes = items.getJSONObject(idx).getString("des");
+        	  System.out.println(myId);
+        	  System.out.println(myTitle);
+        	  System.out.println(myDes);
+          }
       }catch(NullPointerException ne){
-      	params=new Object[]{};
+    	  items=null;
+    	 // items=new Object[]{};
       }
-      String myQ=(String) params[0];
 		redirect("/");
 	}
 
