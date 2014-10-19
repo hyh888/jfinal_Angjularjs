@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.plugin.activerecord.Record;
 
 /**
  * BlogController
@@ -50,9 +52,31 @@ public class ItemController extends Controller {
         	  Integer myId = items.getJSONObject(idx).getInteger("id");
         	  String myTitle = items.getJSONObject(idx).getString("title");
         	  String myDes = items.getJSONObject(idx).getString("des");
-        	  System.out.println(myId);
-        	  System.out.println(myTitle);
-        	  System.out.println(myDes);
+        	  String myStatus = items.getJSONObject(idx).getString("myStatus");
+        	  System.out.println("id:"+myId);
+        	  System.out.println("title:"+myTitle);
+        	  System.out.println("Descripton:"+myDes);
+        	  System.out.println("myStatus:"+myStatus);
+        	  System.out.println("Record "+ idx +"----");
+        	  if (myStatus.equals("D")){
+        		  Db.deleteById("item", items.getJSONObject(idx).getInteger("id"));
+        	  }        	  
+        	  if (myStatus.equals("U")){
+        		  System.out.println("进入u");
+        		  if(myId!=null){
+        			  System.out.println("进入update");
+        			  Item.dao.findById(myId).set("des", myDes).set("title", myTitle).update();
+		        	  }
+        		  else{
+        			  System.out.println("进入New");
+		        	  Record item = new Record().set("des", myDes).set("title", myTitle);
+		        	  Db.save("item", item);        			  
+
+        		  }
+        		  
+        	  }
+
+        	  
           }
       }catch(NullPointerException ne){
     	  items=null;

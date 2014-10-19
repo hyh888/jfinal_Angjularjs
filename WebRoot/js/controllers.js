@@ -69,7 +69,9 @@ myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 			$scope.changeStatus=function(myIndex,myId){
 				$scope.items[myIndex]["myStatus"]="E";
 				};
-			
+				$scope.changeToDel=function(myIndex,myId){
+					$scope.items[myIndex]["myStatus"]="D";
+					};			
 		 $scope.judLast=function(myIndex,myLast){
 				if (true==myLast){
 				  $scope.items.push({});
@@ -82,7 +84,7 @@ myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 					 console.log("change", e.item["id"]); 
 				};	
 				 $scope.saveRecord=function($event,myThis){
-					var p= $event.currentTarget.id;
+					//var p= $event.currentTarget.id;
 					var resultItems=$filter('filter')($scope.items,{myStatus:'U'});
 					var url='/item/batchCrud';
 					$http.post(url, {params: JSON.stringify(resultItems) }).success(function(data){

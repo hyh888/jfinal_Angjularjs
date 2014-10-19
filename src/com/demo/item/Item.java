@@ -13,7 +13,7 @@ mysql> desc Item;
 +---------+--------------+------+-----+---------+----------------+
 | id      | int(11)      | NO   | PRI | NULL    | auto_increment |
 | title   | varchar(200) | NO   |     | NULL    |                |
-| content | mediumtext   | NO   |     | NULL    |                |
+| des     | mediumtext   | NO   |     | NULL    |                |
 +---------+--------------+------+-----+---------+----------------+
 
 数据库字段名建议使用驼峰命名规则，便于与 java 代码保持一致，如字段名： userId

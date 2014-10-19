@@ -7,11 +7,11 @@
 <script src="/js/controllers.js" type="text/javascript" ></script>
 
 <link href="/css/manage.css" media="screen" rel="stylesheet" type="text/css" />
-<br><br><br><br>
+
 JFinal+angularjs+FastJson Example
 </head>
 <body ng-app="myApp">
-<div>
+
 <br><br>
 
 
@@ -47,7 +47,7 @@ Two examples：
 				<td><input type="text" ng-model="item.title" style="width:90%;" ng-blur="judLast($index,$last)" ng-change="judChange($index,this)"/></td>
 				<td><input type="text" ng-model="item.des"  style="width:98%;"  ng-change="judChange($index,this)" /></td>
 				<td>{{item.title+"-"+ item.des}}</td>
-				<td><input id="del-{{$index}}" status="{{item.myStatus}}" ng-click="changeStatus($index,item.id)" type="checkbox">
+				<td><input id="del-{{$index}}" status="{{item.myStatus}}" ng-click="changeToDel($index,item.id)" type="checkbox">
 <button type="button"  ng-click="delRecord($index,item.id)" style="width: 51px; ">Delete</button>
 				</td>
 			</tr>

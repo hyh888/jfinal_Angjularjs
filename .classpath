@@ -9,5 +9,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/Framework/lib/fastjson-1.1.33.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/stax-api-1.0.1.jar"/>
+	<classpathentry kind="lib" path="D:/Framework/lib/xmlbeans-2.3.0.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
