@@ -48,14 +48,26 @@ var myApp = angular.module("myApp", [],function($httpProvider) {
 myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 		 $http.get('/item').success(function(data, status, headers, config) {
 			 $scope.myStr="";
-		  $scope.items = data.items;  
-		  //$scope.items[0]["myStatus"]="E";
-		        $scope.items.push({});
-			        //$scope.items.splice($scope.items.length,0,jEmptyItem);
-		      // $scope.items.splice(0,0,jEmptyItem);
-		        //$scope.items.splice($scope.items.length,0,"");
-		      //"id":"","des":"","title":"" 
+			 $scope.items = data.items;  
+             $scope.items.push({});
+
 		 });
+		 $scope.uploadExcel=function(){
+				$http.get('/item/uploadExcel').success(function(data, status, headers, config) {
+					alert(data);
+					 $scope.items = data.items;  
+		             $scope.items.push({});
+					}); 
+		 
+		 };
+		 
+		 $scope.createExcel=function(){
+				$http.get('/item/createExcel').success(function(data, status, headers, config) {
+					alert(data);
+					}); 
+		 
+		 }	;
+		 
 		 $scope.delRecord=function(myIndex,myId){
 				$scope.items.splice(myIndex,1);
 				alert(myId);
@@ -72,10 +84,10 @@ myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 				$scope.changeToDel=function(myIndex,myId){
 					$scope.items[myIndex]["myStatus"]="D";
 					};			
-		 $scope.judLast=function(myIndex,myLast){
-				if (true==myLast){
-				  $scope.items.push({});
-				  };
+				 $scope.judLast=function(myIndex,myLast){
+						if (true==myLast){
+						  $scope.items.push({});
+						  };
 			};	
 			
 			 $scope.judChange=function(myIndex,e){
@@ -88,14 +100,15 @@ myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 					var resultItems=$filter('filter')($scope.items,{myStatus:'U'});
 					var url='/item/batchCrud';
 					$http.post(url, {params: JSON.stringify(resultItems) }).success(function(data){
+						 $scope.items = data.items;  
+			             $scope.items.push({});
 					});
 				 };
 				
 	});
 	
-
-function hyhClick(e){
-	console.log(e.html());
-	console.log(e.outerHTML());
-	
-}
+//$scope.items[0]["myStatus"]="E";
+//$scope.items.splice($scope.items.length,0,jEmptyItem);
+// $scope.items.splice(0,0,jEmptyItem);
+  //$scope.items.splice($scope.items.length,0,"");
+//"id":"","des":"","title":"" 

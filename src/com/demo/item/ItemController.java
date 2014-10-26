@@ -3,6 +3,7 @@ package com.demo.item;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.demo.util.excelHelper;
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
@@ -40,6 +41,14 @@ public class ItemController extends Controller {
 		redirect("/");
 	}
 
+	public void uploadExcel() {
+		excelHelper im = new excelHelper();
+		//im.readExcel("d:/123.xls");
+		im.readExcel("d:/items.xls");
+		setAttr("items", Item.dao.findAll());
+		renderJson();
+	}
+	
 	public void batchCrud() {
 		String myRs= "{'params':" + getPara("params") + "}";
 	      // 将字符串转为json对象，使用fastjson
@@ -62,7 +71,6 @@ public class ItemController extends Controller {
         		  Db.deleteById("item", items.getJSONObject(idx).getInteger("id"));
         	  }        	  
         	  if (myStatus.equals("U")){
-        		  System.out.println("进入u");
         		  if(myId!=null){
         			  System.out.println("进入update");
         			  Item.dao.findById(myId).set("des", myDes).set("title", myTitle).update();
@@ -82,10 +90,16 @@ public class ItemController extends Controller {
     	  items=null;
     	 // items=new Object[]{};
       }
-		redirect("/");
+		//redirect("/");
+		setAttr("items", Item.dao.findAll());
+		renderJson();
 	}
 
-
+	public void createExcel() {
+		excelHelper im = new excelHelper();
+		im.CreateSimpleExcelToDisk();
+		renderText("OK");
+	}
 	public void delete() {
 		Item.dao.deleteById(getParaToInt());
 		redirect("/");
