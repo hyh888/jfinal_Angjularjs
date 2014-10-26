@@ -95,16 +95,26 @@ myApp.controller("ShoppingController", function ($scope, $http,$filter) {
 				 console.log(myIndex); 
 					 console.log("change", e.item["id"]); 
 				};	
-				 $scope.saveRecord=function($event,myThis){
-					//var p= $event.currentTarget.id;
-					var resultItems=$filter('filter')($scope.items,{myStatus:'U'});
+
+			$scope.saveRecord=function($event,myThis){
+				var resultItems=new Array();
+				var itemCount=$scope.items.length;
+				var myArrayNum=0;
+				for(var i=0;i<itemCount-1;i++) {
+					if ($scope.items[i]["myStatus"]!=undefined){
+						resultItems[myArrayNum]=new Array();
+						resultItems[myArrayNum]=$scope.items[i];
+						myArrayNum++;
+						};
+					};
 					var url='/item/batchCrud';
 					$http.post(url, {params: JSON.stringify(resultItems) }).success(function(data){
 						 $scope.items = data.items;  
 			             $scope.items.push({});
-					});
-				 };
-				
+						});
+					 };					 
+					 
+					 
 	});
 	
 //$scope.items[0]["myStatus"]="E";
